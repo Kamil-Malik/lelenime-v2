@@ -54,14 +54,13 @@ android {
 
 dependencies {
 
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
+
 
 
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.junit.android)
+    androidTestImplementation(libs.espresso)
 
     //  Accompanist
     implementation(libs.accompanist.system.ui.controller)
@@ -87,7 +86,11 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
+    //  Ktx
+    implementation(libs.ktx)
+
     //  ViewModel
+    implementation(libs.lifecycle.ktx)
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.lifecycle.viewmodel.compose)
 }
