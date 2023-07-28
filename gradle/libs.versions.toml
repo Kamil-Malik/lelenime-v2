@@ -1,4 +1,7 @@
 [versions]
+#   AppCompat
+appcompat = "1.6.1"
+
 #   Accompanist
 accompanist = "0.31.5-beta"
 agp = "8.2.0-alpha11"
@@ -24,10 +27,29 @@ junit = "4.13.2"
 #   Kapt
 kapt = "1.9.0"
 
+#   Ksp
+ksp = "1.8.10-1.0.9"
+
+#   MD3
+material = "1.9.0"
+
 #   Media3
 media3-exo-player = "1.1.0"
 media3-exoplayer-hls = "1.1.0"
 media3-ui = "1.1.0"
+
+#   Mock
+mockK = "v1.13.5"
+
+#   Moshi
+moshi = "1.14.0"
+
+#   Paging
+paging = "3.2.0"
+paging-compose = "3.2.0"
+
+#   Retrofit
+retrofit = "2.9.0"
 
 #   Viewmodel
 viewmodel-version = "2.6.1"
@@ -36,7 +58,11 @@ viewmodel-version = "2.6.1"
 worker = "2.8.1"
 
 
+
+
 [libraries]
+#   Appcompat
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 #   Ktx
 ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -72,8 +98,26 @@ hilt-worker = { group = "androidx.hilt", name = "hilt-work", version.ref = "hilt
 hilt-worker-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt-worker" }
 
 #   Junit
-junit-android = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit"}
+junit-android = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+#   MD3
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+#   MockK
+mockK = { group = "io.mockk", name = "mockk", version.ref = "mockK" }
+
+#   Moshi
+moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+
+#   Paging
+paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
+paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging-compose" }
+paging-test = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
+
+#   Retrofit
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 
 #   Viewmodel
 lifecycle-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
@@ -95,6 +139,11 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 #   Kapt
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt" }
+
+#   Ksp
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
 
 [bundles]
 
