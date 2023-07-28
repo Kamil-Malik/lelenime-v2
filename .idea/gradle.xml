@@ -10,6 +10,21 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/local" />
+            <option value="$PROJECT_DIR$/core/local/user_pref" />
+            <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/anime_image" />
+            <option value="$PROJECT_DIR$/feature/anime_image/data" />
+            <option value="$PROJECT_DIR$/feature/anime_image/data/remote" />
+            <option value="$PROJECT_DIR$/feature/anime_image/data/remote/waifu_im" />
+            <option value="$PROJECT_DIR$/feature/anime_image/data/repository" />
+            <option value="$PROJECT_DIR$/feature/anime_image/domain" />
+            <option value="$PROJECT_DIR$/feature/anime_image/domain/model" />
+            <option value="$PROJECT_DIR$/feature/anime_image/domain/usecases" />
+            <option value="$PROJECT_DIR$/feature/anime_image/ui" />
+            <option value="$PROJECT_DIR$/feature/anime_image/ui/component" />
+            <option value="$PROJECT_DIR$/feature/anime_image/ui/screen" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
