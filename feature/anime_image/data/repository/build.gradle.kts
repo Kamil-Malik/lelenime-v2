@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -24,21 +26,31 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
 
-    implementation(libs.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation(project(":core:utils"))
+    implementation(project(":feature:anime_image:data:remote:waifu_im"))
+    implementation(project(":feature:anime_image:domain:model"))
+
+    //  Hilt
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+
+    //  Coroutine
+    implementation(libs.coroutine)
+
+    //  Junit
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.android)
-    androidTestImplementation(libs.espresso)
 }

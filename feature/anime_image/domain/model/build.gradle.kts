@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.parcelize)
 }
 
 android {
@@ -35,10 +37,14 @@ android {
 
 dependencies {
 
-    implementation(libs.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    //  Compose Navigation
+    implementation(libs.compose.navigation)
+
+    //  Junit
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.android)
-    androidTestImplementation(libs.espresso)
+
+    //  Moshi
+    implementation(libs.moshi)
+    ksp(libs.moshi.codegen)
 }

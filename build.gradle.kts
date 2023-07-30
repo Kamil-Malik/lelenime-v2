@@ -7,5 +7,6 @@ plugins {
     alias(libs.plugins.kotlin.kapt) apply false
     alias(libs.plugins.kotlin.ksp) apply false
     alias(libs.plugins.hilt) apply false
+    alias(libs.plugins.parcelize) apply false
 }
 true // Needed to make the Suppress annotation work for the plugins block

@@ -1,4 +1,4 @@
-package com.lelestacia.lelenimev2.ui.theme
+package com.lelestacia.lelenimev2.core.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

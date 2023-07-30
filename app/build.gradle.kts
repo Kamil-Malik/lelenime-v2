@@ -32,19 +32,24 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -54,16 +59,18 @@ android {
 
 dependencies {
 
+    implementation(project(":core:common"))
+    implementation(project(":core:theme"))
+    implementation(project(":core:utils"))
 
-
-
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.junit.android)
-    androidTestImplementation(libs.espresso)
+    //  Feature Anime Image
+    implementation(project(":feature:anime_image:domain:model"))
+    implementation(project(":feature:anime_image:domain:usecases"))
+    implementation(project(":feature:anime_image:ui:screen"))
 
     //  Accompanist
     implementation(libs.accompanist.system.ui.controller)
+    implementation(libs.accompanist.navigation.bottomsheet)
 
     //  Compose
     implementation(platform(libs.compose.bom))
@@ -77,6 +84,12 @@ dependencies {
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
 
+    //  Navigation
+    implementation(libs.compose.navigation)
+
+    //  Espresso
+    androidTestImplementation(libs.espresso)
+
     //  ExoPlayer
     implementation(libs.media3.exoplayer)
     implementation(libs.media3.exoplayer.hls)
@@ -84,7 +97,11 @@ dependencies {
 
     //  Hilt
     implementation(libs.hilt)
+    implementation(libs.hilt.compose)
     kapt(libs.hilt.compiler)
+
+    //  Navigation
+    implementation(libs.compose.navigation)
 
     //  Ktx
     implementation(libs.ktx)
@@ -93,4 +110,8 @@ dependencies {
     implementation(libs.lifecycle.ktx)
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.lifecycle.viewmodel.compose)
+
+    //  Junit
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.android)
 }

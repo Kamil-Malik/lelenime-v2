@@ -1,4 +1,4 @@
-package com.lelestacia.lelenimev2.ui.theme
+package com.lelestacia.lelenimev2.core.theme
 
 import android.app.Activity
 import android.os.Build
