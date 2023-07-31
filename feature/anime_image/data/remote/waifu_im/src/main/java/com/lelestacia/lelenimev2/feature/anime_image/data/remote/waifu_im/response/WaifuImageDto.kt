@@ -31,7 +31,7 @@ data class WaifuImageDto(
     @Json(name = "signature")
     val signature: String,
     @Json(name = "source")
-    val source: String,
+    val source: String?,
     @Json(name = "tags")
     val tags: List<WaifuTagDto>,
     @Json(name = "uploaded_at")

@@ -10,4 +10,12 @@ sealed class Destination(val route: String) {
             )
         }
     }
+    data object WaifuImageDetail: Destination(route = "anime_image/detail/{image_json}") {
+        fun createRoute(imageJson: String): String {
+            return this.route.replace(
+                oldValue = "{image_json}",
+                newValue = imageJson
+            )
+        }
+    }
 }

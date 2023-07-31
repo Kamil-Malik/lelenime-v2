@@ -50,6 +50,9 @@ dependencies {
     implementation(project(":feature:anime_image:domain:model"))
     implementation(project(":feature:anime_image:ui:component"))
 
+    //  Accompanist
+    implementation(libs.accompanist.permission)
+
     //  Compose
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.activity)
@@ -62,6 +65,11 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
+
+    //  Iconic
+    implementation(libs.iconic.core)
+    implementation(libs.iconic.compose)
+    implementation("com.mikepenz:fontawesome-typeface:5.9.0.2-kotlin@aar")
 
     //  Junit
     testImplementation(libs.junit)

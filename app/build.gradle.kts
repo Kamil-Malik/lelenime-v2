@@ -114,4 +114,10 @@ dependencies {
     //  Junit
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.android)
+
+    //  Timber
+    implementation(libs.timber)
+
+    //  Worker
+    implementation(libs.worker)
 }

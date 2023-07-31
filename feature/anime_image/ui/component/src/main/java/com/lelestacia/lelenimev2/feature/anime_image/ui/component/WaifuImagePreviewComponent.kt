@@ -55,11 +55,11 @@ fun WaifuImagePreviewComponent(
 }
 
 @Preview(
-    name = "Waifu Image Component Day Mode",
+    name = "Waifu Image Preview Component Day Mode",
     showBackground = true
 )
 @Preview(
-    name = "Waifu Image Component Dark Mode",
+    name = "Waifu Image Preview Component Dark Mode",
     showBackground = true,
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )

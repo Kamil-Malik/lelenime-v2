@@ -7,6 +7,9 @@ accompanist = "0.31.5-beta"
 agp = "8.2.0-alpha11"
 kotlin = "1.8.10"
 
+#   Circuit
+circuit = "0.12.0"
+
 core-ktx = "1.10.1"
 
 #   Coroutine
@@ -26,6 +29,9 @@ compose-navigation = "2.6.0"
 hilt = "2.47"
 hilt-compose = "1.0.0"
 hilt-worker = "1.0.0"
+
+#   Iconics
+iconics = "5.2.0"
 
 #   Junit
 junit = "4.13.2"
@@ -66,6 +72,9 @@ retrofit = "2.9.0"
 #   Viewmodel
 viewmodel-version = "2.6.1"
 
+#   Timber
+timber = "5.0.1"
+
 #   Worker
 worker = "2.8.1"
 
@@ -75,6 +84,15 @@ worker = "2.8.1"
 [libraries]
 #   Appcompat
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+
+#   Circuit
+circuit-foundation = { group = "com.slack.circuit", name = "circuit-foundation", version.ref = "circuit" }
+circuit-codegen = { group = "com.slack.circuit", name = "circuit-codegen", version.ref = "circuit" }
+circuit-codegen-annotation = { group = "com.slack.circuit", name = "circuit-codegen-annotations-android", version.ref = "circuit" }
+circuit-runtime = { group = "com.slack.circuit", name = "circuit-runtime", version.ref = "circuit" }
+circuit-runtime-ui = { group = "com.slack.circuit", name = "circuit-runtime-ui", version.ref = "circuit" }
+circuit-backstack = { group = "com.slack.circuit", name = "circuit-backstack-android", version.ref = "circuit" }
+circuit-presenter = { group = "com.slack.circuit", name = "circuit-runtime-presenter-android", version.ref = "circuit" }
 
 #   Ktx
 ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -117,6 +135,11 @@ hilt-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", vers
 hilt-worker = { group = "androidx.hilt", name = "hilt-work", version.ref = "hilt-worker" }
 hilt-worker-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt-worker" }
 
+#   Iconic
+iconic-core = { group = "com.mikepenz", name = "iconics-core", version.ref = "iconics" }
+iconic-compose = { group = "com.mikepenz", name = "iconics-compose", version.ref = "iconics" }
+iconic-faw = { group = "com.mikepenz", name = "fontawesome-typeface", version = "5.9.0.2-kotlin@aar" }
+
 #   Junit
 junit-android = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -147,6 +170,9 @@ retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", v
 lifecycle-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel-version" }
 lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewmodel-version" }
+
+#   Timber
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 
 #   Worker
 worker = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "worker" }

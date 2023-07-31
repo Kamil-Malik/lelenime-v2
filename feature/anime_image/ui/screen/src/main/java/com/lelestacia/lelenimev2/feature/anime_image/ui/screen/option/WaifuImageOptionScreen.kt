@@ -4,7 +4,6 @@ import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -38,9 +37,7 @@ fun WaifuImageOptionScreen(
     onEvent: (WaifuImageOptionEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface(
-        modifier = modifier.fillMaxSize()
-    ) {
+    Surface {
         Card(
             shape = RoundedCornerShape(topStartPercent = 5, topEndPercent = 5),
             colors = CardDefaults.cardColors(
@@ -87,7 +84,9 @@ fun WaifuImageOptionScreen(
                 iconDescription = "Share Image",
                 text = "Share",
                 onClick = {
-                    onEvent(WaifuImageOptionEvent.OnShare(image.source))
+                    image.source?.let { source ->
+                        onEvent(WaifuImageOptionEvent.OnShare(source))
+                    }
                 }
             )
             LelenimeBottomSheetButton(

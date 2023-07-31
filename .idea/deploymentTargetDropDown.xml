@@ -2,10 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="PreviewWaifuDetailImageScreen">
+        <State />
+      </entry>
       <entry key="PreviewWaifuImageDetailComponent">
         <State />
       </entry>
       <entry key="PreviewWaifuImageOptionScreen">
+        <State />
+      </entry>
+      <entry key="PreviewWaifuImageTagComponent">
         <State />
       </entry>
       <entry key="app">
@@ -16,12 +22,12 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_6_Pro_API_33.avd" />
+                  <value value="$USER_HOME$/.android/avd/Pixel_3_XL_API_30.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2023-07-29T20:21:05.548890087Z" />
+          <timeTargetWasSelectedWithDropDown value="2023-07-31T10:52:10.405661799Z" />
         </State>
       </entry>
     </value>

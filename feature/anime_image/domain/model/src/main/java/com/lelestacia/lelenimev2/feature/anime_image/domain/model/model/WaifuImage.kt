@@ -18,7 +18,7 @@ data class WaifuImage(
     val likedAt: String?,
     val previewUrl: String,
     val signature: String,
-    val source: String,
+    val source: String?,
     val tags: List<WaifuTag>,
     val uploadedAt: String,
     val url: String,

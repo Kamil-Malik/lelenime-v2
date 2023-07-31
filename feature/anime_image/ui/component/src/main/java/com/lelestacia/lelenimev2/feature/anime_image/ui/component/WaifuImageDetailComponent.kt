@@ -18,7 +18,8 @@ import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuIma
 
 @Composable
 fun WaifuImageDetailComponent(
-    image: WaifuImage
+    image: WaifuImage,
+    modifier: Modifier = Modifier
 ) {
     Surface {
         val context = LocalContext.current
@@ -31,7 +32,7 @@ fun WaifuImageDetailComponent(
                 .build(),
             contentDescription = null,
             filterQuality = FilterQuality.High,
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .aspectRatio(image.width.toFloat() / image.height.toFloat())
         )
@@ -39,11 +40,11 @@ fun WaifuImageDetailComponent(
 }
 
 @Preview(
-    name = "Waifu Image Component Day Mode",
+    name = "Waifu Image Detail Component Day Mode",
     showBackground = true
 )
 @Preview(
-    name = "Waifu Image Component Dark Mode",
+    name = "Waifu Image Detail Component Dark Mode",
     showBackground = true,
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )

@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -57,7 +59,19 @@ dependencies {
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
 
+    //  Hilt
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.worker)
+    kapt(libs.hilt.worker.compiler)
+
     //  Junit
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.android)
+
+    //  Timber
+    implementation(libs.timber)
+
+    //  Worker
+    implementation(libs.worker)
 }
