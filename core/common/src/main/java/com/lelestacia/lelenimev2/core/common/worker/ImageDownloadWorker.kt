@@ -78,6 +78,9 @@ class ImageDownloadWorker(
                 val fileName = params.inputData.getString(FILE_NAME).orEmpty()
                 val url = URL(params.inputData.getString(DOWNLOAD_URL).orEmpty())
 
+                // Show progress notification
+                showProgressNotification()
+
                 //  Start a connection based on retrieved URL
                 val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
                 connection.doInput = true
@@ -105,9 +108,6 @@ class ImageDownloadWorker(
                 }
 
                 val imageUri = contentResolver.insert(collection, contentValues)
-
-                // Show progress notification
-                showProgressNotification()
 
                 imageUri?.let { uri ->
                     val bufferSize = 4096
@@ -207,6 +207,6 @@ class ImageDownloadWorker(
         private const val LOGGER_NAME = "Image Download Worker: "
         const val DOWNLOAD_URL = "download_url"
         const val FILE_ID = "file_id"
-        const val FILE_NAME = "filen_ame"
+        const val FILE_NAME = "file_name"
     }
 }

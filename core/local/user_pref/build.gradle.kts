@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.lelestacia.lelenimev2.core.local.user_pref"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24

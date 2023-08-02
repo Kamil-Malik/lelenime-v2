@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.lelestacia.lelenimev2.feature.anime_image.data.repository"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24

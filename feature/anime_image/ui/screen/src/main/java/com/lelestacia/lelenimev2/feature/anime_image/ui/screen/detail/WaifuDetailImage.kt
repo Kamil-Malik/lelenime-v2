@@ -75,6 +75,7 @@ fun WaifuDetailImageScreen(
             }
         )
 
+
     val notificationPermission: PermissionState =
         rememberPermissionState(
             permission = Manifest.permission.POST_NOTIFICATIONS,
@@ -112,7 +113,7 @@ fun WaifuDetailImageScreen(
                     actions = {
                         IconButton(
                             onClick = {
-                                if (!readAndWritePermission.allPermissionsGranted) {
+                                if (!readAndWritePermission.allPermissionsGranted && Build.VERSION.SDK_INT < 33) {
                                     readAndWritePermission.launchMultiplePermissionRequest()
                                     return@IconButton
                                 }

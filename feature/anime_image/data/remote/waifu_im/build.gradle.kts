@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.lelestacia.lelenimev2.feature.anime_image.data.remote.waifu_im"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
