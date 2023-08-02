@@ -12,18 +12,12 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import androidx.work.Constraints
-import androidx.work.Data
-import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.lelestacia.lelenimev2.core.common.screen.ErrorScreen
-import com.lelestacia.lelenimev2.core.common.worker.ImageDownloadWorker
 import com.lelestacia.lelenimev2.core.utils.DataState
 import com.lelestacia.lelenimev2.core.utils.Destination
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuImage
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.type.WaifuImageNavType
-import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.viewmodel.WaifuImageOptionsViewModel
+import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.viewmodel.WaifuDetailImageViewModel
 import com.lelestacia.lelenimev2.feature.anime_image.ui.screen.detail.WaifuDetailImageEvent
 import com.lelestacia.lelenimev2.feature.anime_image.ui.screen.detail.WaifuDetailImageScreen
 
@@ -54,7 +48,8 @@ fun NavGraphBuilder.waifuImageDetailScreen(
             } else {
                 navBackStackEntry.arguments?.getParcelable("image_json")
             }
-        val vm = hiltViewModel<WaifuImageOptionsViewModel>()
+
+        val vm = hiltViewModel<WaifuDetailImageViewModel>()
         LaunchedEffect(Unit) {
             imageJson?.let { image ->
                 vm.setWaifuImages(image)
@@ -77,22 +72,7 @@ fun NavGraphBuilder.waifuImageDetailScreen(
                         when (event) {
                             WaifuDetailImageEvent.OnBackPressed -> navController.popBackStack()
                             is WaifuDetailImageEvent.OnSaveImage -> {
-                                val inputData = Data.Builder()
-                                    .putString(ImageDownloadWorker.DOWNLOAD_URL, event.image.url)
-                                    .putInt(ImageDownloadWorker.FILE_ID, event.image.imageId)
-                                    .putString(ImageDownloadWorker.FILE_NAME, event.image.imageId.toString())
-                                    .build()
-
-                                val constraints = Constraints.Builder()
-                                    .setRequiredNetworkType(NetworkType.CONNECTED) // Optional: Add network constraints if required
-                                    .build()
-
-                                val imageDownloadRequest = OneTimeWorkRequestBuilder<ImageDownloadWorker>()
-                                    .setInputData(inputData)
-                                    .setConstraints(constraints)
-                                    .build()
-
-                                WorkManager.getInstance(context).enqueue(imageDownloadRequest)
+                                vm.downloadWaifu(event.image)
                             }
 
                             is WaifuDetailImageEvent.OnShareImage -> {

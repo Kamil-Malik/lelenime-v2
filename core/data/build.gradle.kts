@@ -3,13 +3,11 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.ksp)
-    alias(libs.plugins.parcelize)
     alias(libs.plugins.hilt)
 }
 
 android {
-    namespace = "com.lelestacia.lelenimev2.feature.anime_image.domain.usecases"
+    namespace = "com.lelestacia.lelenimev2.core.data"
     compileSdk = 34
 
     defaultConfig {
@@ -41,27 +39,19 @@ android {
 
 dependencies {
 
-    implementation(project(":core:data"))
-    implementation(project(":core:utils"))
-    implementation(project(":feature:anime_image:domain:model"))
-    implementation(project(":feature:anime_image:data:repository"))
+    implementation(project(":core:common"))
 
     //  Hilt
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    //  Coroutine
-    implementation(libs.coroutine)
-
     //  Junit
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.android)
 
-    //  Moshi
-    implementation(libs.moshi)
-    ksp(libs.moshi.codegen)
+    //  Timber
+    implementation(libs.timber)
 
-    //  Lifecycle
-    implementation(libs.lifecycle.viewmodel)
-    implementation(libs.lifecycle.ktx)
+    //  Worker
+    implementation(libs.worker)
 }

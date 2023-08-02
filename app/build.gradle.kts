@@ -117,7 +117,4 @@ dependencies {
 
     //  Timber
     implementation(libs.timber)
-
-    //  Worker
-    implementation(libs.worker)
 }

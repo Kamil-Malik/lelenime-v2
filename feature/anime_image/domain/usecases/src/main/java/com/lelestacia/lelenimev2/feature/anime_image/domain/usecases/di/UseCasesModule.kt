@@ -1,5 +1,6 @@
 package com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.di
 
+import com.lelestacia.lelenimev2.core.data.repository.sharedRepository
 import com.lelestacia.lelenimev2.feature.anime_image.data.repository.repository.WaifuRepository
 import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.usecases.WaifuUseCases
 import dagger.Module
@@ -15,10 +16,12 @@ object UseCasesModule {
     @Provides
     @ViewModelScoped
     fun provideWaifuUseCases(
-        waifuRepository: WaifuRepository
+        waifuRepository: WaifuRepository,
+        sharedRepository: sharedRepository
     ): WaifuUseCases {
         return WaifuUseCases(
-            waifuRepository = waifuRepository
+            waifuRepository = waifuRepository,
+            sharedRepository = sharedRepository
         )
     }
 }

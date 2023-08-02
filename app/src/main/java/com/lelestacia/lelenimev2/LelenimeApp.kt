@@ -22,7 +22,7 @@ import com.lelestacia.lelenimev2.core.utils.DataState
 import com.lelestacia.lelenimev2.core.utils.Destination
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuImage
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.type.WaifuImageNavType
-import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.viewmodel.WaifuImageOptionsViewModel
+import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.viewmodel.WaifuDetailImageViewModel
 import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.viewmodel.WaifuImageViewModel
 import com.lelestacia.lelenimev2.feature.anime_image.ui.screen.image.WaifuImageScreen
 import com.lelestacia.lelenimev2.feature.anime_image.ui.screen.option.WaifuImageOptionEvent
@@ -97,7 +97,7 @@ fun LelenimeApp() {
                     } else {
                         navBackStackEntry.arguments?.getParcelable("image_json")
                     }
-                val vm = hiltViewModel<WaifuImageOptionsViewModel>()
+                val vm = hiltViewModel<WaifuDetailImageViewModel>()
                 LaunchedEffect(Unit) {
                     imageJson?.let { image ->
                         vm.setWaifuImages(image)

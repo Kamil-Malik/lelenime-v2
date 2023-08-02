@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WaifuImageOptionsViewModel @Inject constructor(
+class WaifuDetailImageViewModel @Inject constructor(
     private val useCases: WaifuUseCases
 ) : ViewModel() {
 
@@ -33,5 +33,9 @@ class WaifuImageOptionsViewModel @Inject constructor(
 
     fun setWaifuImages(image: WaifuImage) = viewModelScope.launch {
         _waifuImages.update { DataState.Success(data = image) }
+    }
+
+    fun downloadWaifu(image: WaifuImage) = viewModelScope.launch {
+        useCases.downloadWaifus(image)
     }
 }
