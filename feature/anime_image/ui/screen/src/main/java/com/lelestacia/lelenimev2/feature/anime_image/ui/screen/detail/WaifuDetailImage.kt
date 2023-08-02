@@ -132,7 +132,20 @@ fun WaifuDetailImageScreen(
                                 contentDescription = null
                             )
                         }
-                        IconButton(onClick = { onEvent(WaifuDetailImageEvent.OnShareImage(image)) }) {
+                        IconButton(onClick = {
+
+                            if (image.source.isNullOrBlank()) {
+                                scope.launch {
+                                    snackBarHostState.showSnackbar(
+                                        message = "This image does not have any source",
+                                        duration = SnackbarDuration.Short
+                                    )
+                                }
+                                return@IconButton
+                            }
+
+                            onEvent(WaifuDetailImageEvent.OnShareImage(image))
+                        }) {
                             Icon(
                                 imageVector = Icons.Default.Share,
                                 contentDescription = null
