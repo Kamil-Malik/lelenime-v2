@@ -1,7 +1,6 @@
 package com.lelestacia.lelenimev2.navigation
 
 import android.content.Intent
-import android.os.Build
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -14,14 +13,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.lelestacia.lelenimev2.core.common.screen.ErrorScreen
 import com.lelestacia.lelenimev2.core.utils.DataState
-import com.lelestacia.lelenimev2.core.utils.Destination
+import com.lelestacia.lelenimev2.core.common.Destination
+import com.lelestacia.lelenimev2.core.utils.parcelable
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuImage
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.type.WaifuImageNavType
 import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.viewmodel.WaifuDetailImageViewModel
 import com.lelestacia.lelenimev2.feature.anime_image.ui.screen.detail.WaifuDetailImageEvent
 import com.lelestacia.lelenimev2.feature.anime_image.ui.screen.detail.WaifuDetailImageScreen
 
-fun NavGraphBuilder.waifuImageDetailScreen(
+fun NavGraphBuilder.waifuImageDetailComposableRoute(
     navController: NavHostController
 ) {
     composable(
@@ -34,34 +34,24 @@ fun NavGraphBuilder.waifuImageDetailScreen(
         enterTransition = {
             slideIntoContainer(towards = AnimatedContentTransitionScope.SlideDirection.Up)
         },
-        exitTransition = {
+        popExitTransition = {
             slideOutOfContainer(towards = AnimatedContentTransitionScope.SlideDirection.Down)
         }
     ) { navBackStackEntry ->
         val context = LocalContext.current
-        val imageJson: WaifuImage? =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                navBackStackEntry.arguments?.getParcelable(
-                    "image_json",
-                    WaifuImage::class.java
-                )
-            } else {
-                navBackStackEntry.arguments?.getParcelable("image_json")
-            }
+        val image: WaifuImage? = navBackStackEntry.arguments?.parcelable("image_json")
 
         val vm = hiltViewModel<WaifuDetailImageViewModel>()
         LaunchedEffect(Unit) {
-            imageJson?.let { image ->
-                vm.setWaifuImages(image)
-            }
+            vm.setWaifuImages(image as WaifuImage)
         }
 
         val waifuImageState by vm.waifuImages.collectAsState()
         when (waifuImageState) {
             is DataState.Error -> {
                 ErrorScreen(
-                    errorMessage = (waifuImageState as DataState.Error).errorMessage,
-                    onRetry = { /*TODO*/ }
+                    errorMessage = (waifuImageState as DataState.Error).errorMessage.asString(),
+                    onRetry = {}
                 )
             }
 
@@ -71,6 +61,7 @@ fun NavGraphBuilder.waifuImageDetailScreen(
                     onEvent = { event ->
                         when (event) {
                             WaifuDetailImageEvent.OnBackPressed -> navController.popBackStack()
+
                             is WaifuDetailImageEvent.OnSaveImage -> {
                                 vm.downloadWaifu(event.image)
                             }

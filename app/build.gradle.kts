@@ -83,6 +83,7 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
+    implementation(libs.compose.icon)
 
     //  Navigation
     implementation(libs.compose.navigation)

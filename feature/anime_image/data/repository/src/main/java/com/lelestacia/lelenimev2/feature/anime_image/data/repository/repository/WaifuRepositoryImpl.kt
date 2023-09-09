@@ -1,6 +1,7 @@
 package com.lelestacia.lelenimev2.feature.anime_image.data.repository.repository
 
 import com.lelestacia.lelenimev2.core.utils.DataState
+import com.lelestacia.lelenimev2.core.utils.EventHandler
 import com.lelestacia.lelenimev2.feature.anime_image.data.remote.waifu_im.endpoint.WaifuIM
 import com.lelestacia.lelenimev2.feature.anime_image.data.remote.waifu_im.response.ResponseDto
 import com.lelestacia.lelenimev2.feature.anime_image.data.remote.waifu_im.response.WaifuImageDto
@@ -17,6 +18,7 @@ import javax.inject.Inject
 
 class WaifuRepositoryImpl @Inject constructor(
     private val waifuIM: WaifuIM,
+    private val eventHandler: EventHandler = EventHandler(),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : WaifuRepository {
 
@@ -28,8 +30,8 @@ class WaifuRepositoryImpl @Inject constructor(
             emit(DataState.Success(data = waifus))
         }.onStart {
             emit(DataState.Loading)
-        }.catch {
-            emit(DataState.Error(errorMessage = it.message.orEmpty()))
+        }.catch { t ->
+            emit(DataState.Error(errorMessage = eventHandler(t)))
         }.flowOn(ioDispatcher)
     }
 }

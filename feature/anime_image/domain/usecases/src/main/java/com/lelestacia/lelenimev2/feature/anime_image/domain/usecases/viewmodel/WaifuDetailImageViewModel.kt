@@ -3,6 +3,7 @@ package com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lelestacia.lelenimev2.core.utils.DataState
+import com.lelestacia.lelenimev2.core.utils.UIText
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuImage
 import com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.usecases.WaifuUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +28,7 @@ class WaifuDetailImageViewModel @Inject constructor(
         try {
             _waifuImages.update { DataState.Success(data = useCases.decodeJson(image)) }
         } catch (e: Exception) {
-            _waifuImages.update { DataState.Error(errorMessage = e.message.orEmpty()) }
+            _waifuImages.update { DataState.Error(errorMessage = UIText.DynamicString(e.message.orEmpty())) }
         }
     }
 

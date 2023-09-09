@@ -37,7 +37,9 @@ fun WaifuImageOptionScreen(
     onEvent: (WaifuImageOptionEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface {
+    Surface(
+        modifier = modifier
+    ) {
         Card(
             shape = RoundedCornerShape(topStartPercent = 5, topEndPercent = 5),
             colors = CardDefaults.cardColors(

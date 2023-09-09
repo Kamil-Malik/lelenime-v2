@@ -37,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:utils"))
+
     //  Compose Navigation
     implementation(libs.compose.navigation)
 

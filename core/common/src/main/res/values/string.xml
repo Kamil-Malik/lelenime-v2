@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Title-->
+    <string name="app_name">Lelenime</string>
+    <string name="app_subtitle">Your Anime Companion App</string>
+
+    <!--Message-->
+    <string name="message_no_internet_connection">Check your internet connection and try again</string>
+
+</resources>

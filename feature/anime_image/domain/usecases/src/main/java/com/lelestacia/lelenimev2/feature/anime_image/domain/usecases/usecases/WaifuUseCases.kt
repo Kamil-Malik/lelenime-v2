@@ -2,6 +2,8 @@ package com.lelestacia.lelenimev2.feature.anime_image.domain.usecases.usecases
 
 import com.lelestacia.lelenimev2.core.data.repository.sharedRepository
 import com.lelestacia.lelenimev2.core.utils.DataState
+import com.lelestacia.lelenimev2.core.utils.fromJson
+import com.lelestacia.lelenimev2.core.utils.toJson
 import com.lelestacia.lelenimev2.feature.anime_image.data.repository.repository.WaifuRepository
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuImage
 import com.squareup.moshi.JsonAdapter
@@ -27,15 +29,10 @@ class WaifuUseCases @Inject constructor(
     }
 
     fun encodeJson(image: WaifuImage): String {
-        val moshi = Moshi.Builder().build()
-        val jsonAdapter: JsonAdapter<WaifuImage> = moshi.adapter(WaifuImage::class.java)
-        return jsonAdapter.toJson(image)
+        return toJson(image)
     }
 
     fun decodeJson(image: String): WaifuImage {
-        val moshi = Moshi.Builder().build()
-        val jsonAdapter: JsonAdapter<WaifuImage> = moshi.adapter(WaifuImage::class.java)
-        return jsonAdapter.fromJson(image)
-            ?: throw Exception("Sorry, we failed to retrieve image from previous screen")
+        return fromJson(image)
     }
 }

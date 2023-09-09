@@ -47,6 +47,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:theme"))
+
     //  Compose
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.activity)
@@ -54,10 +56,14 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.graphics)
     implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.icon)
     debugImplementation(libs.compose.ui.test.manifest)
     debugImplementation(libs.compose.ui.tooling)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
+
+    //  Navigation
+    implementation(libs.compose.navigation)
 
     //  Hilt
     implementation(libs.hilt)

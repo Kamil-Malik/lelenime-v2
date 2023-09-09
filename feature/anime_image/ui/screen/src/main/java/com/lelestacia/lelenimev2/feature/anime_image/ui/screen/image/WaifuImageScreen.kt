@@ -1,15 +1,21 @@
 package com.lelestacia.lelenimev2.feature.anime_image.ui.screen.image
 
 import android.content.res.Configuration
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.foundation.lazy.staggeredgrid.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,14 +27,17 @@ import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuIma
 import com.lelestacia.lelenimev2.feature.anime_image.domain.model.model.WaifuImageVariantTwo
 import com.lelestacia.lelenimev2.feature.anime_image.ui.component.WaifuImagePreviewComponent
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun WaifuImageScreen(
     images: List<WaifuImage>,
+    onRefresh: () -> Unit,
     onClicked: (WaifuImage) -> Unit,
-    onLongClicked: (WaifuImage) -> Unit
+    onLongClicked: (WaifuImage) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    Surface {
+    Surface(
+        modifier = modifier
+    ) {
         LazyVerticalStaggeredGrid(
             columns = StaggeredGridCells.Fixed(2),
             verticalItemSpacing = 4.dp,
@@ -43,6 +52,27 @@ fun WaifuImageScreen(
                     onClicked = onClicked,
                     onLongClicked = onLongClicked
                 )
+            }
+            if (images.isNotEmpty()) {
+                item(
+                    span = StaggeredGridItemSpan.FullLine
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(24.dp)
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Text(text = "Done with current image?")
+                            Button(onClick = onRefresh) {
+                                Text(text = "Load Another Images")
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -67,7 +97,8 @@ fun PreviewWaifuImageScreen() {
                 WaifuImageVariantFour,
             ),
             onClicked = {},
-            onLongClicked = {}
+            onLongClicked = {},
+            onRefresh = {}
         )
     }
 }
